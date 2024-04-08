@@ -1,0 +1,78 @@
+#todos_box {
+    width: 100%;
+    height: 60%;
+    background-color: gray;
+}
+#todos_box>div {
+    width: 50%;
+    height: 100%;
+}
+#text_box {
+    width: 100%;
+    height: 10%;
+    background-color: tomato;
+}
+
+#list_down {
+    width: 50%;
+    height: 100%;
+    background-color: tan;
+}
+#item_down {
+    margin: 0;
+    padding: 0;
+    width: 90%;
+    height: 90%;
+    background-color: rebeccapurple;
+    list-style-type: none;
+    justify-content: start;
+    gap: 10px;
+}
+#item_down>li {
+    position: relative;
+    width: 90%;
+    height: 50px;
+    top: 20px;
+    background-color: goldenrod;
+    display: flex;
+    justify-content:start;
+    align-items: center;
+    flex-direction: row;
+}
+
+#list_addtodo {
+    width: 50%;
+    height: 100%;
+    background-color: teal;
+}
+#item_addtodo {
+    margin: 0;
+    padding: 0;
+    width: 90%;
+    height: 90%;
+    background-color: rebeccapurple;
+    justify-content: start;
+    list-style-type: none;
+    gap: 10px;
+}
+#item_addtodo>li {
+    position: relative;
+    width: 90%;
+    height: 50px;
+    top: 20px;
+    background-color: goldenrod;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    flex-direction: row;
+    gap: 250px;
+}
+#item_addtodo>li>svg {
+    cursor: pointer;
+}
+
+#input_todo_box {
+    width: 100%;
+    height: 40%;
+    background-color: rgb(41, 41, 41);
+}
