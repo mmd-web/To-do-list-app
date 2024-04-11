@@ -1,7 +1,8 @@
 let $ = document;
 
 let inputAddTodo = $.getElementById ("name_todo");
-let ulBox = $.getElementById ("item_addtodo");
+let ulBoxAddNewTodo = $.getElementById ("item_addtodo");
+let ulBoxDownItem = $.getElementById ("item_down");
 
 
 function addNewTodo (saveValueInp) {
@@ -21,8 +22,20 @@ function addNewTodo (saveValueInp) {
     spanItem.innerHTML = saveValueInp;
 
     liItem.append (spanItem , boxIcon);
-    ulBox.append (liItem);
+    ulBoxAddNewTodo.append (liItem);
+
+iconItemDelet.addEventListener ("click" , () => {
+    iconItemDelet.parentElement.parentElement.remove();
+});
+
+iconItemDown.addEventListener ("click" , () => {
+    let saveDownTodo = iconItemDown.parentElement.parentElement;
+    let saveItem = ulBoxDownItem.appendChild (saveDownTodo);
+    saveItem.lastChild.remove();
+});
+
 }
+
 
 
 inputAddTodo.addEventListener ("keydown" , (event) => {

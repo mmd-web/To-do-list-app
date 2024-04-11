@@ -24,9 +24,10 @@
     width: 90%;
     height: 90%;
     background-color: rebeccapurple;
-    list-style-type: none;
     justify-content: start;
+    list-style-type: none;
     gap: 10px;
+    overflow-y: scroll;
 }
 #item_down>li {
     position: relative;
@@ -35,7 +36,7 @@
     top: 20px;
     background-color: goldenrod;
     display: flex;
-    justify-content:start;
+    justify-content: start;
     align-items: center;
     flex-direction: row;
 }
