@@ -3,6 +3,8 @@ let $ = document;
 let inputAddTodo = $.getElementById ("name_todo");
 let ulBoxAddNewTodo = $.getElementById ("item_addtodo");
 let ulBoxDownItem = $.getElementById ("item_down");
+let textAddTodo = $.getElementById ("text_add_todo");
+let textTodoDown = $.getElementById ("text_todo_down");
 
 
 function addNewTodo (saveValueInp) {
@@ -29,6 +31,7 @@ iconItemDelet.addEventListener ("click" , () => {
 });
 
 iconItemDown.addEventListener ("click" , () => {
+    textTodoDown.innerHTML = "List of tasks you have completed";
     let saveDownTodo = iconItemDown.parentElement.parentElement;
     let saveItem = ulBoxDownItem.appendChild (saveDownTodo);
     saveItem.lastChild.remove();
@@ -45,8 +48,10 @@ inputAddTodo.addEventListener ("keydown" , (event) => {
         // console.log("hello world");
         if (inputAddTodo.value) {
             // alert ("true");
+            textAddTodo.innerHTML = "Your to-do list";
             inputAddTodo.value = '';
             addNewTodo(saveValueInp);
+
         }else {
             // alert ("false")
         }
