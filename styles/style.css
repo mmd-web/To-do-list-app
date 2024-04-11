@@ -59,6 +59,7 @@
     justify-content: start;
     list-style-type: none;
     gap: 10px;
+    overflow-y: scroll;
 }
 #item_addtodo>li {
     position: relative;
@@ -102,4 +103,58 @@
     padding: 0 20px;
     font-family: var(--fontFamily);
     font-size: 18px;
+}
+
+.gg-check-r {
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    width: 22px;
+    height: 22px;
+    border: 2px solid;
+    transform: scale(var(--ggs,1));
+    border-radius: 4px
+}
+.gg-check-r::after {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    left: 3px;
+    top: -1px;
+    width: 6px;
+    height: 10px;
+    border-width: 0 2px 2px 0;
+    border-style: solid;
+    transform-origin: bottom left;
+    transform: rotate(45deg)
+}
+
+
+.gg-close-r {
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    transform: scale(var(--ggs,1));
+    width: 22px;
+    height: 22px;
+    border: 2px solid;
+    border-radius: 4px
+}
+.gg-close-r::after,
+.gg-close-r::before {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    width: 12px;
+    height: 2px;
+    background: currentColor;
+    transform: rotate(45deg);
+    border-radius: 5px;
+    top: 8px;
+    left: 3px
+}
+.gg-close-r::after {
+    transform: rotate(-45deg)
 }
