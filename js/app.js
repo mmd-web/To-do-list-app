@@ -42,7 +42,7 @@ iconItemDown.addEventListener ("click" , () => {
 
 
 inputAddTodo.addEventListener ("keydown" , (event) => {
-    let saveValueInp = inputAddTodo.value;
+    let saveValueInp = inputAddTodo.value.trim();
 
     if (event.key === "Enter") {
         // console.log("hello world");
@@ -51,7 +51,6 @@ inputAddTodo.addEventListener ("keydown" , (event) => {
             textAddTodo.innerHTML = "Your to-do list";
             inputAddTodo.value = '';
             addNewTodo(saveValueInp);
-
         }else {
             // alert ("false")
         }
