@@ -6,54 +6,35 @@ let ulBoxDownItem = $.getElementById ("item_down");
 let textAddTodo = $.getElementById ("text_add_todo");
 let textTodoDown = $.getElementById ("text_todo_down");
 
+let dataBaseLocal = [];
 
-function addNewTodo (saveValueInp) {
-
-    let liItem = $.createElement ("li");
-    let spanItem = $.createElement ("span");
-    let boxIcon = $.createElement ("div");
-    let iconItemDelet = $.createElement ("i");
-        iconItemDelet.className = "gg-close-r";
-    let iconItemDown = $.createElement ("i");
-        iconItemDown.className = "gg-check-r";
-
-    boxIcon.id = "svg_box";
-    boxIcon.className = "flex_row";
-    boxIcon.append (iconItemDown , iconItemDelet);
-    // console.log(boxIcon);
-    spanItem.innerHTML = saveValueInp;
-
-    liItem.append (spanItem , boxIcon);
-    ulBoxAddNewTodo.append (liItem);
-
-iconItemDelet.addEventListener ("click" , () => {
-    iconItemDelet.parentElement.parentElement.remove();
-});
-
-iconItemDown.addEventListener ("click" , () => {
-    textTodoDown.innerHTML = "List of tasks you have completed";
-    let saveDownTodo = iconItemDown.parentElement.parentElement;
-    let saveItem = ulBoxDownItem.appendChild (saveDownTodo);
-    saveItem.lastChild.remove();
-});
-
+// todo تابع اضافه کردن تودو جدید
+function addNewTodo () {
+    let saveValueInput = inputAddTodo.value;
+    
+    let newObjItem = {
+        id : dataBaseLocal.length+1,
+        content : saveValueInput,
+        status : false
+    }
+    
+    dataBaseLocal.push(newObjItem);
+    setDataToLocalStorage(dataBaseLocal);
+    addNewBoxForTodo(dataBaseLocal);
 }
 
+// todo تابع ست کردن اطلاعات روی لوکال استورج
+function setDataToLocalStorage (todos) {
+    localStorage.setItem("todos" , JSON.stringify(todos));
+};
 
+// todo تابع ساخت باکس
+function addNewBoxForTodo (todoList) {
+    
+};
 
-inputAddTodo.addEventListener ("keydown" , (event) => {
-    let saveValueInp = inputAddTodo.value.trim();
-
+inputAddTodo.addEventListener ("keyup" , (event) => {
     if (event.key === "Enter") {
-        // console.log("hello world");
-        if (inputAddTodo.value) {
-            // alert ("true");
-            textAddTodo.innerHTML = "Your to-do list";
-            inputAddTodo.value = '';
-            addNewTodo(saveValueInp);
-        }else {
-            // alert ("false")
-        }
-    }
-
-})
+        addNewTodo();
+    };
+});
