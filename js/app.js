@@ -28,6 +28,31 @@ function setDataToLocalStorage (todos) {
     localStorage.setItem("todos" , JSON.stringify(todos));
 };
 
+// todo Down
+function btnDown (todoId) {
+    let getValueOfLocalStorage = JSON.parse(localStorage.getItem("todos"));
+    todoList = getValueOfLocalStorage;
+    todoList.forEach((todos) => {
+        if (todos.id === todoId) {
+            todos.status = !todos.status;
+        }
+    });
+    setDataToLocalStorage(todoList);
+    addNewBoxForTodo(todoList);
+};
+
+// todo Delet
+function btnDelet (todoId) {
+    let getValueOfLocalStorage = JSON.parse(localStorage.getItem("todos"));
+    todoList = getValueOfLocalStorage;
+    let checkOfIdTodo = todoList.findIndex((todos) => {
+        return todos.id === todoId;
+    });
+    todoList.splice(checkOfIdTodo , 1);
+    setDataToLocalStorage(todoList);
+    addNewBoxForTodo(todoList);
+};
+
 // todo تابع ساخت باکس
 function addNewBoxForTodo (todoList) {
     let getValueOfLocalStorage = JSON.parse(localStorage.getItem("todos"));
@@ -63,6 +88,20 @@ function addNewBoxForTodo (todoList) {
 
     inputAddTodo.value = "";
 };
+
+// todo تابع ای که فقط زمان لود اجرا میشه و برای ما اطلاعات لوکال رو میگیره و آرایمون رو آپدیت میکنه و به ازای هر آیتم باکس میسازه
+function getDataOfLocalStorage () {
+    let getValueOfLocalStorage = JSON.parse(localStorage.getItem("todos"));
+    if (getValueOfLocalStorage) {
+        dataBaseLocal = getValueOfLocalStorage;
+        addNewBoxForTodo(dataBaseLocal);
+    }else {
+        dataBaseLocal = [];
+    }
+};
+
+window.addEventListener ("load" , getDataOfLocalStorage);
+
 
 inputAddTodo.addEventListener ("keyup" , (event) => {
     if (event.key === "Enter") {
