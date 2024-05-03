@@ -37,6 +37,11 @@ function btnDown (todoId) {
             todos.status = !todos.status;
         }
     });
+    // todoList.forEach((todos) => {
+    //     if (todos.id === todoId && todos.status) {
+            
+    //     }
+    // })
     setDataToLocalStorage(todoList);
     addNewBoxForTodo(todoList);
 };
@@ -59,6 +64,7 @@ function addNewBoxForTodo (todoList) {
         todoList = getValueOfLocalStorage;
 
     ulBoxAddNewTodo.innerHTML = "";
+    ulBoxDownItem.innerHTML = "";
         
     todoList.forEach((todo) => {
 
@@ -81,9 +87,15 @@ function addNewBoxForTodo (todoList) {
         boxIconElem.append (iconElemDown , iconElemDelet);
         // console.log(boxIcon);
         spanElem.innerHTML = todo.content;
-    
-        liElem.append (spanElem , boxIconElem);
-        ulBoxAddNewTodo.append (liElem);
+
+        if (todo.status) {
+            iconElemDown.remove();
+            liElem.append (spanElem , boxIconElem);
+            ulBoxDownItem.append (liElem);
+        }else {
+            liElem.append (spanElem , boxIconElem);
+            ulBoxAddNewTodo.append (liElem);
+        }
     });
 
     inputAddTodo.value = "";
