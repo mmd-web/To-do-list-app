@@ -30,7 +30,11 @@ function setDataToLocalStorage (todos) {
 
 // todo تابع ساخت باکس
 function addNewBoxForTodo (todoList) {
-    
+    let getValueOfLocalStorage = JSON.parse(localStorage.getItem("todos"));
+        todoList = getValueOfLocalStorage;
+        todoList.forEach((todo) => {
+            
+        });
 };
 
 inputAddTodo.addEventListener ("keyup" , (event) => {
