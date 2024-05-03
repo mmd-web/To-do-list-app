@@ -32,9 +32,36 @@ function setDataToLocalStorage (todos) {
 function addNewBoxForTodo (todoList) {
     let getValueOfLocalStorage = JSON.parse(localStorage.getItem("todos"));
         todoList = getValueOfLocalStorage;
-        todoList.forEach((todo) => {
-            
-        });
+
+    ulBoxAddNewTodo.innerHTML = "";
+        
+    todoList.forEach((todo) => {
+
+        let liElem = $.createElement ("li");
+        let spanElem = $.createElement ("span");
+        let boxIconElem = $.createElement ("div");
+        let iconElemDelet = $.createElement ("i");
+            iconElemDelet.className = "gg-close-r";
+            iconElemDelet.addEventListener ("click" , () => {
+                btnDelet(todo.id);
+            });
+        let iconElemDown = $.createElement ("i");
+            iconElemDown.className = "gg-check-r";
+            iconElemDown.addEventListener ("click" , () => {
+                btnDown(todo.id);
+            });
+    
+        boxIconElem.id = "svg_box";
+        boxIconElem.className = "flex_row";
+        boxIconElem.append (iconElemDown , iconElemDelet);
+        // console.log(boxIcon);
+        spanElem.innerHTML = todo.content;
+    
+        liElem.append (spanElem , boxIconElem);
+        ulBoxAddNewTodo.append (liElem);
+    });
+
+    inputAddTodo.value = "";
 };
 
 inputAddTodo.addEventListener ("keyup" , (event) => {
