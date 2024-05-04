@@ -31,47 +31,40 @@ function setDataToLocalStorage (todos) {
 // todo Down
 function btnDown (todoId) {
     let getValueOfLocalStorage = JSON.parse(localStorage.getItem("todos"));
-    todoList = getValueOfLocalStorage;
-    todoList.forEach((todos) => {
+    dataBaseLocal = getValueOfLocalStorage;
+    dataBaseLocal.forEach((todos) => {
         if (todos.id === todoId) {
             todos.status = !todos.status;
         }
     });
-    // todoList.forEach((todos) => {
-    //     if (todos.id === todoId && todos.status) {
-            
-    //     }
-    // })
-    setDataToLocalStorage(todoList);
-    addNewBoxForTodo(todoList);
+    setDataToLocalStorage(dataBaseLocal);
+    addNewBoxForTodo(dataBaseLocal);
 };
 
 // todo Delet
 function btnDelet (todoId) {
     let getValueOfLocalStorage = JSON.parse(localStorage.getItem("todos"));
-    todoList = getValueOfLocalStorage;
-    let checkOfIdTodo = todoList.findIndex((todos) => {
+    dataBaseLocal = getValueOfLocalStorage;
+    let checkOfIdTodo = dataBaseLocal.findIndex((todos) => {
         return todos.id === todoId;
     });
-    todoList.splice(checkOfIdTodo , 1);
-    setDataToLocalStorage(todoList);
-    addNewBoxForTodo(todoList);
+    dataBaseLocal.splice(checkOfIdTodo , 1);
+    setDataToLocalStorage(dataBaseLocal);
+    addNewBoxForTodo(dataBaseLocal);
 };
 
 // todo تابع ساخت باکس
 function addNewBoxForTodo (todoList) {
-    let getValueOfLocalStorage = JSON.parse(localStorage.getItem("todos"));
-        todoList = getValueOfLocalStorage;
-
+    let liElem , spanElem , boxIconElem , iconElemDelet;
     ulBoxAddNewTodo.innerHTML = "";
     ulBoxDownItem.innerHTML = "";
         
     todoList.forEach((todo) => {
 
-        let liElem = $.createElement ("li");
-        let spanElem = $.createElement ("span");
-        let boxIconElem = $.createElement ("div");
-        let iconElemDelet = $.createElement ("i");
+        liElem = $.createElement ("li");
+        spanElem = $.createElement ("span");
+        boxIconElem = $.createElement ("div");
+        iconElemDelet = $.createElement ("i");
             iconElemDelet.className = "gg-close-r";
             iconElemDelet.addEventListener ("click" , () => {
                 btnDelet(todo.id);
@@ -92,9 +85,11 @@ function addNewBoxForTodo (todoList) {
             iconElemDown.remove();
             liElem.append (spanElem , boxIconElem);
             ulBoxDownItem.append (liElem);
+            textTodoDown.innerHTML = "The tasks you completed";
         }else {
             liElem.append (spanElem , boxIconElem);
             ulBoxAddNewTodo.append (liElem);
+            textAddTodo.innerHTML = "The tasks you completed";
         }
     });
 
