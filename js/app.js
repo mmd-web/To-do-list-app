@@ -39,6 +39,11 @@ function btnDown (todoId) {
     });
     setDataToLocalStorage(dataBaseLocal);
     addNewBoxForTodo(dataBaseLocal);
+    if (ulBoxAddNewTodo.childNodes.length <= 0) {
+        textAddTodo.innerHTML = "No todo has add";
+    }else {
+        textAddTodo.innerHTML = "The tasks you added";
+    }
 };
 
 // todo Delet
@@ -51,6 +56,11 @@ function btnDelet (todoId) {
     dataBaseLocal.splice(checkOfIdTodo , 1);
     setDataToLocalStorage(dataBaseLocal);
     addNewBoxForTodo(dataBaseLocal);
+    if (ulBoxDownItem.childNodes.length <= 0) {
+        textTodoDown.innerHTML = "No work has been completed yet";
+    }else {
+        textTodoDown.innerHTML = "The tasks you completed";
+    }
 };
 
 // todo تابع ساخت باکس
@@ -89,7 +99,7 @@ function addNewBoxForTodo (todoList) {
         }else {
             liElem.append (spanElem , boxIconElem);
             ulBoxAddNewTodo.append (liElem);
-            textAddTodo.innerHTML = "The tasks you completed";
+            textAddTodo.innerHTML = "The tasks you added";
         }
     });
 
