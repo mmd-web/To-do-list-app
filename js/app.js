@@ -123,9 +123,13 @@ window.addEventListener ("load" , getDataOfLocalStorage);
 
 inputAddTodo.addEventListener ("keyup" , (event) => {
     if (event.key === "Enter") {
-        addNewTodo();
+        if (inputAddTodo.value) {
+            addNewTodo();
+        }
     };
 });
 AddTodoBtn.addEventListener ("click" , () => {
-    addNewTodo();
+    if (inputAddTodo.value) {
+        addNewTodo();
+    }
 });
