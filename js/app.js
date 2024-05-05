@@ -5,6 +5,7 @@ let ulBoxAddNewTodo = $.getElementById ("item_addtodo");
 let ulBoxDownItem = $.getElementById ("item_down");
 let textAddTodo = $.getElementById ("text_add_todo");
 let textTodoDown = $.getElementById ("text_todo_down");
+let AddTodoBtn = $.getElementById ("Add_todo");
 
 let dataBaseLocal = [];
 
@@ -124,4 +125,7 @@ inputAddTodo.addEventListener ("keyup" , (event) => {
     if (event.key === "Enter") {
         addNewTodo();
     };
+});
+AddTodoBtn.addEventListener ("click" , () => {
+    addNewTodo();
 });
